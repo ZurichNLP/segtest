@@ -8,7 +8,7 @@ Data-driven subword segmentation has become the default strategy for open-vocabu
 # Preparing the Data
 You can find our synthetic training data as well as the test sets for the morphological phenomena in the `test_suite_data` folder. In order to train an NMT model on this data, we recommend adding a larger corpus of real translations to the training data and using a real-data dev set.
 
-If you want to reproduce our experiments from the paper, you should add the training data from the WMT16 news translation task and use the test sets from WMT15 as the development data. You can download the data on the [official WMT website](http://www.statmt.org/wmt16/translation-task.html).
+If you want to reproduce our experiments from the [paper](https://arxiv.org/pdf/2109.01100.pdf), you should add the training data from the WMT16 news translation task and use the test sets from WMT15 as the development data. You can download the data on the [official WMT website](http://www.statmt.org/wmt16/translation-task.html).
 
 Decompress the synthetic data and concatenate the files with your own training data files:
 
@@ -24,7 +24,7 @@ Decompress the synthetic data and concatenate the files with your own training d
 
 # Training Your Models
 
-We provide the training scripts for the models we trained in the paper. If you want to reproduce our results, you can use these scripts to train the respective models.
+We provide the training scripts for the models we trained in the [paper](https://arxiv.org/pdf/2109.01100.pdf). If you want to reproduce our results, you can use these scripts to train the respective models.
 
 Our models were trained with [nematus](https://github.com/EdinburghNLP/nematus), the preprocessing for BPE models is done with [SentencePiece](https://github.com/google/sentencepiece) and we use [sacrebleu](https://github.com/mjpost/sacrebleu) to monitor translation quality throughout the training. Please follow the installation instructions in these repositories to install the necesary toolkits.  
 
@@ -53,7 +53,7 @@ For evaluation, you can call the `evaluate.sh` script in the respective model fo
 
 This will evaluate all translated test sets.
 
-If you did not train models yourself but simply want to reproduce the evaluation of the model outputs in our paper, you can also do this. We provide the test set translations of our models in the `paper_results` folder. The main results in the paper (Table 4) can be reproduced as follows:
+If you did not train models yourself but simply want to reproduce the evaluation of the model outputs in our [paper](https://arxiv.org/pdf/2109.01100.pdf), you can also do this. We provide the test set translations of our models in the `paper_results` folder. The main results in the paper (Table 4) can be reproduced as follows:
 
     python scripts/evaluate.py -t paper_results/$model/$type.postprocessed -i test_suite_data/$type.meta -s test_suite_data/$type.scores -m $type -r surface
 
@@ -65,7 +65,7 @@ where `$model` is either `bpe-32k`, `bpe-d32k`, `bpe-d500` or `char` and `$type`
     #2: 0.0
     #3: 0.72
 
-The ids correspond to the ids used in the paper. See Table 5 in the Appendix for an overview of which id corresponds to which pattern.
+The ids correspond to the ids used in the [paper](https://arxiv.org/pdf/2109.01100.pdf). See Table 5 in the Appendix for an overview of which id corresponds to which pattern.
 
 To evaluate the abstract representation, change the value for `-r`:
 
@@ -84,14 +84,16 @@ To evaluate based on the frequency with which a source word base is seen with th
 
 # Citation
 
-If you use this test suite, please cite the following paper:
+If you use this test suite, please cite our [paper](https://arxiv.org/pdf/2109.01100.pdf):
 
-    @inproceedings{amrhein2021,
+    @inproceedings{amrhein-sennrich-2021-suitable,
     title = "How Suitable Are Subword Segmentation Strategies for Translating Non-Concatenative Morphology?",
     author = "Amrhein, Chantal  and
       Sennrich, Rico",
     booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2021",
     month = nov,
     year = "2021",
+    address = "Punta Cana, Dominican Republic",
     publisher = "Association for Computational Linguistics",
+    eprint = "2109.01100"
     }
